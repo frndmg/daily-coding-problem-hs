@@ -16,6 +16,7 @@ module Area634 where
 -- bars of the histogram. For the diagram above, for example, this would be six,
 -- representing the 2 x 3 area at the bottom right.
 
+-- |Compute the maximum area of the figure given by the heights of the columns
 area :: [Int] -> Int
 area colHeights = area' [] colHeights 0
   where

@@ -4,26 +4,26 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 9b86cf24dd1630362f862f1ec97862bd4611dc6661edee61f38462857868982f
+-- hash: 67b45efa2e143e32a76b43262c02ddee445f699203de66065f9e61149aad63d0
 
 name:           daily-coding-problem-hs
 version:        0.1.0.0
-description:    Please see the README on GitHub at <https://github.com/githubuser/daily-coding-problem-hs#readme>
-homepage:       https://github.com/githubuser/daily-coding-problem-hs#readme
-bug-reports:    https://github.com/githubuser/daily-coding-problem-hs/issues
-author:         Author name here
-maintainer:     example@example.com
-copyright:      2021 Author name here
+description:    Please see the README on GitHub at <https://github.com/frndmg/daily-coding-problem-hs#readme>
+homepage:       https://github.com/frndmg/daily-coding-problem-hs#readme
+bug-reports:    https://github.com/frndmg/daily-coding-problem-hs/issues
+author:         Fernando Martínez González
+maintainer:     frndmartinezglez@gmail.com
+copyright:      2021 Fernando Martínez González
 license:        BSD3
 license-file:   LICENSE
 build-type:     Simple
 extra-source-files:
     README.md
-    ChangeLog.md
+    CHANGELOG.md
 
 source-repository head
   type: git
-  location: https://github.com/githubuser/daily-coding-problem-hs
+  location: https://github.com/frndmg/daily-coding-problem-hs
 
 library
   exposed-modules:

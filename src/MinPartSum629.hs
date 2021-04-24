@@ -4,15 +4,15 @@ import qualified Data.Heap as Heap
 import qualified Data.List as List
 
 minPartSum :: [Int] -> Int -> Int
-minPartSum xs k =
-  minPartSum' (Heap.fromList firstK) rest
+minPartSum xs k = minPartSum' partitionSums rest
   where
-    minPartSum' cumSums [] = foldl max 0 cumSums
-    minPartSum' cumSums (x : xs) =
-      minPartSum' cumSums' xs
-      where
-        cumSums' = Heap.adjustMin (+ x) cumSums
+    minPartSum' partitionSums xs =
+      case Heap.viewMin xs of
+        Nothing -> foldl max 0 partitionSums
+        Just (Heap.Entry _ x, xs') -> minPartSum' partitionSums' xs'
+          where
+            partitionSums' = Heap.adjustMin (+ x) partitionSums
 
-    firstK = take k xs'
-    rest = drop k xs'
-    xs' = List.sortOn negate xs
+    partitionSums = Heap.map Heap.payload greatestK
+    (greatestK, rest) = Heap.splitAt k sortedXs
+    sortedXs = Heap.fromList $ map (\x -> Heap.Entry (- x) x) xs

@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 67b45efa2e143e32a76b43262c02ddee445f699203de66065f9e61149aad63d0
+-- hash: 8eea51ccf7cc7448dceb7de33b42a0e40abe974953ef8405ccc67fec7981019c
 
 name:           daily-coding-problem-hs
 version:        0.1.0.0
@@ -28,12 +28,14 @@ source-repository head
 library
   exposed-modules:
       Area634
+      MinPartSum629
   other-modules:
       Paths_daily_coding_problem_hs
   hs-source-dirs:
       src
   build-depends:
       base >=4.7 && <5
+    , heaps
   default-language: Haskell2010
 
 test-suite daily-coding-problem-hs-test
@@ -41,6 +43,7 @@ test-suite daily-coding-problem-hs-test
   main-is: Spec.hs
   other-modules:
       Area634Spec
+      MinPartSum629Spec
       Paths_daily_coding_problem_hs
   hs-source-dirs:
       test
@@ -49,6 +52,7 @@ test-suite daily-coding-problem-hs-test
       QuickCheck
     , base >=4.7 && <5
     , daily-coding-problem-hs
+    , heaps
     , hspec
     , hspec-contrib
   default-language: Haskell2010

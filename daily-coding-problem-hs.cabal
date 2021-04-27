@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 8eea51ccf7cc7448dceb7de33b42a0e40abe974953ef8405ccc67fec7981019c
+-- hash: f1ce3fa6312078a91440e4b13c9611f2e37763e96b35d39d699df0e072dd48b2
 
 name:           daily-coding-problem-hs
 version:        0.1.0.0
@@ -29,6 +29,7 @@ library
   exposed-modules:
       Area634
       MinPartSum629
+      Overlapping637
   other-modules:
       Paths_daily_coding_problem_hs
   hs-source-dirs:
@@ -44,6 +45,7 @@ test-suite daily-coding-problem-hs-test
   other-modules:
       Area634Spec
       MinPartSum629Spec
+      Overlapping637Spec
       Paths_daily_coding_problem_hs
   hs-source-dirs:
       test

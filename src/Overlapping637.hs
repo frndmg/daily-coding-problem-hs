@@ -2,17 +2,36 @@ module Overlapping637 where
 
 import Data.List (sortOn)
 
-overlap :: [(Int, Int)] -> [(Int, Int)]
+data Interval = Interval
+  { begin :: Int,
+    end :: Int
+  }
+  deriving (Show, Eq)
+
+fromTuple :: (Int, Int) -> Interval
+fromTuple (a, b) = Interval a b
+
+isValidInterval :: Interval -> Bool
+isValidInterval (Interval a b) = a <= b
+
+areOverlapping :: Interval -> Interval -> Bool
+areOverlapping (Interval a b) (Interval a' b') =
+  a <= a' && a' <= b
+    || a' <= a && a <= b'
+
+merge :: Interval -> Interval -> Interval
+merge (Interval a b) (Interval a' b') = Interval (min a a') (max b b')
+
+overlap :: [Interval] -> [Interval]
 overlap [] = []
-overlap x' = fst overlap' ++ [snd overlap']
+overlap is = fst overlapped ++ [snd overlapped]
   where
-    (x:xs) = sortOn fst x'
+    (initialInterval : restOfIntervals) = sortOn begin is
 
-    overlap' = foldl merge ([], x) xs
+    overlapped = foldl op ([], initialInterval) restOfIntervals
 
-    merge (acc, y) x
-      | shouldMerge y x = (acc, merge' y x)
-      | otherwise = (acc ++ [y], x)
-
-    shouldMerge (_, b) (a', _) = a' <= b
-    merge' (a, b) (_, b') = (a, max b b')
+    op (acc, intervalCandidate) interval
+      | areOverlapping intervalCandidate interval =
+        (acc, merge intervalCandidate interval)
+      | otherwise =
+        (acc ++ [intervalCandidate], interval)

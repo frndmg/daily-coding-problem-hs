@@ -3,6 +3,7 @@ module Overlapping637 where
 import Data.List (sortOn)
 
 overlap :: [(Int, Int)] -> [(Int, Int)]
+overlap [] = []
 overlap x' = fst overlap' ++ [snd overlap']
   where
     (x:xs) = sortOn fst x'
